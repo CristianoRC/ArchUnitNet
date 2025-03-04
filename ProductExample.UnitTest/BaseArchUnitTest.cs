@@ -1,5 +1,7 @@
 using ArchUnitNET.Domain;
 using ArchUnitNET.Loader;
+using System.Reflection;
+using System.Linq;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace ProductExample.UnitTest;
@@ -14,6 +16,17 @@ public abstract class BaseArchUnitTest
             typeof(Product.A.Setup).Assembly,
             typeof(Product.B.Setup).Assembly)
         .Build();
+        
+    protected static readonly Architecture DynamicArchitecture = new ArchLoader()
+        .LoadAssemblies(GetProductExampleAssemblies())
+        .Build();
+
+    private static System.Reflection.Assembly[] GetProductExampleAssemblies()
+    {
+        return AppDomain.CurrentDomain.GetAssemblies()
+            .Where(assembly => assembly.GetName().Name?.StartsWith("ProductExample") is true)
+            .ToArray();
+    }
 
     protected readonly IObjectProvider<IType> ProductATypes =
         Types().That().ResideInNamespace("ProductExample.Product.A", true);

@@ -55,6 +55,10 @@ public class ProjectDependenciesUnitTest : BaseArchUnitTest
             .Should().NotDependOnAny(ProductBTypes);
 
         rule.Because("Cyclic dependencies between products are not allowed")
+            .Check(DynamicArchitecture);
+        
+        rule.Because("Cyclic dependencies between products are not allowed")
             .Check(Architecture);
+        
     }
 }
