@@ -20,8 +20,10 @@ public abstract class BaseArchUnitTest
 
     protected readonly IObjectProvider<IType> ProductBTypes =
         Types().That().ResideInNamespace("ProductExample.Product.B", true);
-
-    protected readonly IObjectProvider<IType> AllowedDependencies =
-        Types().That().ResideInNamespace("ProductExample.Core", true)
-            .Or().ResideInNamespace("ProductExample.Extensions", true);
+        
+    protected readonly IObjectProvider<IType> CoreTypes =
+        Types().That().ResideInNamespace("ProductExample.Core", true);
+        
+    protected readonly IObjectProvider<IType> ExtensionsTypes =
+        Types().That().ResideInNamespace("ProductExample.Extensions", true);
 }
