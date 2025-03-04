@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ProductExample.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/")]
 [Authorize]//TODO: Comentar para falhar o teste
 public class WeatherForecastController : ControllerBase
 {
@@ -20,7 +20,7 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
     
-    [HttpGet(Name = "GetWeatherForecast")]
+    [HttpGet("GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -30,5 +30,25 @@ public class WeatherForecastController : ControllerBase
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+    }
+
+    // TODO: descomentar para ver falhar
+    // [AllowAnonymous]
+    [HttpGet("/date")]
+    public IActionResult Index()
+    {
+        return Ok(DateTime.Now);
+    }
+    
+    [HttpGet("/date-utc")]
+    public IActionResult Example()
+    {
+        return Ok(DateTime.UtcNow);
+    }
+    
+    [HttpPost("/date-utc")]
+    public IActionResult ExamplePost()
+    {
+        return Ok(DateTime.UtcNow);
     }
 }
