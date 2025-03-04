@@ -45,12 +45,12 @@ public class ProjectDependenciesUnitTest : BaseArchUnitTest
     [Fact]
     public void NoCyclicDependencies_BetweenProjectsDynamically()
     {
-        var productNamespaces = Architecture.Types
+        var productNamespaces = DynamicArchitecture.Types
             .Where(type => type.FullName.StartsWith("ProductExample.Product."))
             .Select(type => type.Namespace)
             .Distinct()
             .ToList();
-
+        
         foreach (var currentProductNamespace in productNamespaces)
         {
             foreach (var otherProductNamespace in productNamespaces)

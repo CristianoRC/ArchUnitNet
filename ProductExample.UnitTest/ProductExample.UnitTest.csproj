@@ -30,6 +30,7 @@
       <ProjectReference Include="..\ProductExample.Extensions\ProductExample.Extensions.csproj" />
       <ProjectReference Include="..\ProductExample.Product.A\ProductExample.Product.A.csproj" />
       <ProjectReference Include="..\ProductExample.Product.B\ProductExample.Product.B.csproj" />
+      <ProjectReference Include="..\ProductExample.Product.C\ProductExample.Product.C.csproj" />
     </ItemGroup>
 
 </Project>
