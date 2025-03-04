@@ -11,6 +11,7 @@ public abstract class BaseArchUnitTest
 {
     protected static readonly Architecture Architecture = new ArchLoader()
         .LoadAssemblies(
+            typeof(Api.Program).Assembly,
             typeof(Extensions.StringExtensions).Assembly,
             typeof(Core.Setup).Assembly,
             typeof(Product.A.Setup).Assembly,

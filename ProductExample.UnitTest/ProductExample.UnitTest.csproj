@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\ProductExample.Api\ProductExample.Api.csproj" />
       <ProjectReference Include="..\ProductExample.Core\ProductExample.Core.csproj" />
       <ProjectReference Include="..\ProductExample.Extensions\ProductExample.Extensions.csproj" />
       <ProjectReference Include="..\ProductExample.Product.A\ProductExample.Product.A.csproj" />
