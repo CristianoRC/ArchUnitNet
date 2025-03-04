@@ -59,11 +59,11 @@ public class ProjectDependenciesUnitTest : BaseArchUnitTest
                 if (isTheSameNamespace)
                     continue;
 
-                var currentProductTypes = Types().That().ResideInNamespace(currentProductNamespace.Name, true);
-                var otherProductTypes = Types().That().ResideInNamespace(otherProductNamespace.Name, true);
+                var currentProduct = Types().That().ResideInNamespace(currentProductNamespace.Name, true);
+                var otherProduct = Types().That().ResideInNamespace(otherProductNamespace.Name, true);
 
-                var rule = Types().That().Are(currentProductTypes)
-                    .Should().NotDependOnAny(otherProductTypes);
+                var rule = Types().That().Are(currentProduct)
+                    .Should().NotDependOnAny(otherProduct);
 
                 rule.Because($"Produto {currentProductNamespace.Name} não deve depender de {otherProductNamespace.Name}")
                     .Check(DynamicArchitecture);

@@ -14,7 +14,8 @@ public abstract class BaseArchUnitTest
             typeof(Core.Setup).Assembly,
             typeof(Extensions.Setup).Assembly,
             typeof(Product.A.Setup).Assembly,
-            typeof(Product.B.Setup).Assembly)
+            typeof(Product.B.Setup).Assembly,
+            typeof(Product.C.Setup).Assembly)
         .Build();
         
     protected static readonly Architecture DynamicArchitecture = new ArchLoader()
