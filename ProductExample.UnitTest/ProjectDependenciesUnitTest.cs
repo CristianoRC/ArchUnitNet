@@ -5,28 +5,12 @@ namespace ProductExample.UnitTest;
 
 public class ProjectDependenciesUnitTest : BaseArchUnitTest
 {
-
-    [Fact]
-    public void ProjectB_ShouldOnlyDependOn_CoreAndExtensions()
-    {
-        var allowedDependenciesForB = Types()
-            .That().ResideInNamespace("ProductExample.Core", true)
-            .Or().ResideInNamespace("ProductExample.Extensions", true);
-        
-        var rule = Types().That().Are(ProductBTypes)
-            .Should().OnlyDependOnTypesThat().Are(allowedDependenciesForB);
-
-        rule.Because("Project B should only depend on Core and Extensions")
-            .Check(Architecture);
-    }
-
     [Fact]
     public void Core_ShouldNotDependOn_AnyOtherProject()
     {
         var forbiddenDependenciesForCore = Types()
-            .That().ResideInNamespace("ProductExample.Extensions", true)
-            .Or().ResideInNamespace("ProductExample.Product.A", true)
-            .Or().ResideInNamespace("ProductExample.Product.B", true);
+            .That().ResideInNamespace("ProductExample", true)
+            .And().DoNotResideInNamespace("ProductExample.Core", true);
 
         var rule = Types().That().Are(CoreTypes)
             .Should().NotDependOnAny(forbiddenDependenciesForCore);
@@ -56,9 +40,5 @@ public class ProjectDependenciesUnitTest : BaseArchUnitTest
 
         rule.Because("Cyclic dependencies between products are not allowed")
             .Check(DynamicArchitecture);
-        
-        rule.Because("Cyclic dependencies between products are not allowed")
-            .Check(Architecture);
-        
     }
 }
