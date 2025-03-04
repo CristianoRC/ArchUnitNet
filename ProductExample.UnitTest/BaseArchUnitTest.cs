@@ -25,7 +25,7 @@ public abstract class BaseArchUnitTest
     private static System.Reflection.Assembly[] GetProductExampleAssemblies()
     {
         return AppDomain.CurrentDomain.GetAssemblies()
-            .Where(assembly => assembly.GetName().Name?.StartsWith("ProductExample") is true)
+            .Where(assembly => assembly.GetName().Name?.StartsWith("ProductExample", StringComparison.OrdinalIgnoreCase) is true)
             .ToArray();
     }
     
