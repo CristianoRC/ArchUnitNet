@@ -24,7 +24,7 @@ public class ProjectDependenciesUnitTest : BaseArchUnitTest
     {
         var allowedDependenciesForExtensions = Types()
             .That().ResideInNamespace("ProductExample.Core", true);
-            
+
         var rule = Types().That().Are(ExtensionsTypes)
             .Should().OnlyDependOnTypesThat().Are(allowedDependenciesForExtensions);
 
@@ -40,5 +40,34 @@ public class ProjectDependenciesUnitTest : BaseArchUnitTest
 
         rule.Because("Cyclic dependencies between products are not allowed")
             .Check(DynamicArchitecture);
+    }
+
+    [Fact]
+    public void NoCyclicDependencies_BetweenProjectsDynamically()
+    {
+        var productNamespaces = Architecture.Types
+            .Where(type => type.FullName.StartsWith("ProductExample.Product."))
+            .Select(type => type.Namespace)
+            .Distinct()
+            .ToList();
+
+        foreach (var currentProductNamespace in productNamespaces)
+        {
+            foreach (var otherProductNamespace in productNamespaces)
+            {
+                var isTheSameNamespace = Equals(currentProductNamespace, otherProductNamespace);
+                if (isTheSameNamespace)
+                    continue;
+
+                var currentProductTypes = Types().That().ResideInNamespace(currentProductNamespace.Name, true);
+                var otherProductTypes = Types().That().ResideInNamespace(otherProductNamespace.Name, true);
+
+                var rule = Types().That().Are(currentProductTypes)
+                    .Should().NotDependOnAny(otherProductTypes);
+
+                rule.Because($"Produto {currentProductNamespace.Name} não deve depender de {otherProductNamespace.Name}")
+                    .Check(DynamicArchitecture);
+            }
+        }
     }
 }

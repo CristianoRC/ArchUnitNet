@@ -27,7 +27,7 @@ public abstract class BaseArchUnitTest
             .Where(assembly => assembly.GetName().Name?.StartsWith("ProductExample") is true)
             .ToArray();
     }
-
+    
     protected readonly IObjectProvider<IType> ProductATypes =
         Types().That().ResideInNamespace("ProductExample.Product.A", true);
 
