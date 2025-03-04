@@ -6,6 +6,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductExample.UnitTest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductExample.Extensions", "ProductExample.Extensions\ProductExample.Extensions.csproj", "{0681DEF0-9DBD-4B20-B36F-8CB8CDC6B908}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5065A96D-73E6-4FD1-AB28-DA0E0458EC9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Products", "Products", "{888BC87B-D15D-42DC-B3BC-193A96C9CC14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductExample.Product.A", "ProductExample.Product.A\ProductExample.Product.A.csproj", "{A11B2BAA-5EFA-449F-8C62-141CB857039E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductExample.Product.B", "ProductExample.Product.B\ProductExample.Product.B.csproj", "{FF101579-8467-446B-9053-45C16C51660C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +32,19 @@ Global
 		{0681DEF0-9DBD-4B20-B36F-8CB8CDC6B908}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0681DEF0-9DBD-4B20-B36F-8CB8CDC6B908}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0681DEF0-9DBD-4B20-B36F-8CB8CDC6B908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A11B2BAA-5EFA-449F-8C62-141CB857039E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A11B2BAA-5EFA-449F-8C62-141CB857039E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A11B2BAA-5EFA-449F-8C62-141CB857039E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A11B2BAA-5EFA-449F-8C62-141CB857039E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF101579-8467-446B-9053-45C16C51660C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF101579-8467-446B-9053-45C16C51660C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF101579-8467-446B-9053-45C16C51660C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF101579-8467-446B-9053-45C16C51660C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC815A9B-B363-4036-849E-832811EF279B} = {5065A96D-73E6-4FD1-AB28-DA0E0458EC9E}
+		{0681DEF0-9DBD-4B20-B36F-8CB8CDC6B908} = {5065A96D-73E6-4FD1-AB28-DA0E0458EC9E}
+		{A11B2BAA-5EFA-449F-8C62-141CB857039E} = {888BC87B-D15D-42DC-B3BC-193A96C9CC14}
+		{FF101579-8467-446B-9053-45C16C51660C} = {888BC87B-D15D-42DC-B3BC-193A96C9CC14}
 	EndGlobalSection
 EndGlobal
