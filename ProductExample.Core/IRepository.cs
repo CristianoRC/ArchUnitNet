@@ -4,7 +4,7 @@ public interface IRepository
 {
 }
 
-//TODO: Remover comentários para testes de nomes
-/*public interface Repository
+//TODO: Comentar para passar para testes de nomes
+public interface Repository
 {
-}*/
+}
